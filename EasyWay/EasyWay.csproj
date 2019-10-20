@@ -180,9 +180,18 @@
     <Compile Include="Migrations\201910201259528_InitialModel.Designer.cs">
       <DependentUpon>201910201259528_InitialModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910201513521_AddChargeToPackage.cs" />
+    <Compile Include="Migrations\201910201513521_AddChargeToPackage.Designer.cs">
+      <DependentUpon>201910201513521_AddChargeToPackage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910201535562_PopulateSizeAndChargeOfPackage.cs" />
+    <Compile Include="Migrations\201910201535562_PopulateSizeAndChargeOfPackage.Designer.cs">
+      <DependentUpon>201910201535562_PopulateSizeAndChargeOfPackage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Car.cs" />
+    <Compile Include="Models\ChargeOfPackage.cs" />
     <Compile Include="Models\Driver.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -274,6 +283,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201910201259528_InitialModel.resx">
       <DependentUpon>201910201259528_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910201513521_AddChargeToPackage.resx">
+      <DependentUpon>201910201513521_AddChargeToPackage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910201535562_PopulateSizeAndChargeOfPackage.resx">
+      <DependentUpon>201910201535562_PopulateSizeAndChargeOfPackage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

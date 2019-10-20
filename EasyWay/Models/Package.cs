@@ -15,7 +15,13 @@ namespace EasyWay.Models
         public DateTime DateLeft { get; set; }
         public int Phone { get; set; }
         public bool Delivered { get; set; }
+
         public SizeOfPackage SizeOfPackage { get; set; }
         public byte SizeOfPackageId { get; set; }
+
+        public ChargeOfPackage ChargeOfPackage { get; set; }
+        public byte ChargeOfPackageId { get; set; }
+
+        public int FinalPrice { get; set; }
     }
 }

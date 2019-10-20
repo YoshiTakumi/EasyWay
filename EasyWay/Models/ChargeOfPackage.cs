@@ -5,11 +5,9 @@ using System.Web;
 
 namespace EasyWay.Models
 {
-    public class SizeOfPackage
+    public class ChargeOfPackage
     {
         public byte Id { get; set; }
-        public int Weight { get; set; }  // Pithanon na mn xrhsimopoihthei katholou
-        public short Pricing { get; set; }
-
+        public int ChargeByRegion { get; set; }
     }
 }
