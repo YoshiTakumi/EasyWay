@@ -9,6 +9,7 @@ namespace EasyWay.Models
     {
         public int Id { get; set; }
         public string Brand { get; set; }
+        public DateTime? YearManufactured { get; set; }
         public string LicensePlate { get; set; }
     }
 }

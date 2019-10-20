@@ -14,5 +14,8 @@ namespace EasyWay.Models
         public int SerialNumber { get; set; }
         public DateTime DateLeft { get; set; }
         public int Phone { get; set; }
+        public bool Delivered { get; set; }
+        public SizeOfPackage SizeOfPackage { get; set; }
+        public byte SizeOfPackageId { get; set; }
     }
 }

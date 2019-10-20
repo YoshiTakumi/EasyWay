@@ -19,15 +19,7 @@ namespace EasyWay.Controllers
             return View(packages);
         }
 
-        public ActionResult Details(int id)
-        {
-            var package = GetPackages().SingleOrDefault(p => p.Id == id);
-
-            if (package == null)
-                return HttpNotFound(); 
-
-            return View(package);
-        }
+        
 
 
         private IEnumerable<Package> GetPackages()
