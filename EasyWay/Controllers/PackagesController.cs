@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using EasyWay.Models;
+using EasyWay.ViewModels;
 
 
 namespace EasyWay.Controllers
@@ -31,6 +32,20 @@ namespace EasyWay.Controllers
 
            
             return View(packages);
+        }
+
+        public ActionResult New()
+        {
+            var sizeOfPackage = _context.SizeOfPackages.ToList();
+            var chargeOfPackage = _context.ChargeOfPackages.ToList();
+
+            var viewModel = new NewPackageViewModel
+            {
+                SizeOfPackages = sizeOfPackage,
+                ChargeOfPackages = chargeOfPackage
+            };
+            
+            return View(viewModel);
         }
 
         
