@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -26,7 +27,7 @@ namespace EasyWay.Controllers
 
         public ViewResult Index()
         {
-            var packages = _context.Packages.ToList();
+            var packages = _context.Packages.Include(p => p.SizeOfPackage).Include(p => p.ChargeOfPackage).ToList();
 
            
             return View(packages);
