@@ -9,17 +9,33 @@ namespace EasyWay.Controllers
 {
     public class DriversController : Controller
     {
-        // GET: Drivers
+
+        private ApplicationDbContext _context;
+
+
+        public DriversController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
+
+        
         public ViewResult Index()
         {
-            var drivers = GetDrivers();
+            var drivers = _context.Drivers.ToList();
+
             return View(drivers);
         }
 
         public ActionResult Details(int id)
         {
 
-            var driver = GetDrivers().SingleOrDefault(d => d.Id == id);
+            var driver = _context.Drivers.SingleOrDefault(d => d.Id == id);
             if (driver == null)
                 return HttpNotFound();
             else
@@ -27,14 +43,6 @@ namespace EasyWay.Controllers
         }
 
 
-        private IEnumerable<Driver> GetDrivers()
-        {
-            return new List<Driver>
-            {
-                new Driver { Id = 1, Name = "Χαρίλαος Γιαννόπουλος", Phone = 2310521010 },
-                new Driver { Id = 2, Name = "Επαμεινώνδας Χαριτάτος",  Phone = 2310521212 },
-                new Driver { Id = 3, Name = "Θρασύβουλος Φλώρος", Phone = 231052131313 }
-            };
-        }
+       
     }
 }

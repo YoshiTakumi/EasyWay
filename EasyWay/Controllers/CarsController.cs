@@ -8,23 +8,26 @@ namespace EasyWay.Controllers
 {
     public class CarsController : Controller
     {
-        // GET: Cars
+        private ApplicationDbContext _context;
+
+
+        public CarsController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        
+
         public ActionResult Index()
         {
-            var cars = GetCars();
+            var cars = _context.Cars.ToList();
+
             return View(cars);
         }
 
 
         
 
-        private IEnumerable<Car> GetCars()
-        {
-            return new List<Car>
-            {
-                new Car {Id = 1, Brand = "Opel Vivaro", LicensePlate = "NXO 1213"},
-                new Car {Id = 2, Brand = "Mercedes Vito", LicensePlate = "IXV 2311"}
-            };
-        }
+        
     }
 }

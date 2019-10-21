@@ -21,6 +21,9 @@ namespace EasyWay.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Package> Packages { get; set; }
+        public DbSet<Driver> Drivers { get; set; }
+        public DbSet<Car> Cars { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

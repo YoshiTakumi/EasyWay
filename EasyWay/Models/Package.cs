@@ -13,7 +13,7 @@ namespace EasyWay.Models
         public string ReceiverAddress { get; set; }
         public int SerialNumber { get; set; }
         public DateTime DateLeft { get; set; }
-        public int Phone { get; set; }
+        public long Phone { get; set; }
         public bool Delivered { get; set; }
 
         public SizeOfPackage SizeOfPackage { get; set; }

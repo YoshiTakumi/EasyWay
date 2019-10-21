@@ -8,6 +8,7 @@ namespace EasyWay.Models
     public class ChargeOfPackage
     {
         public byte Id { get; set; }
+        public string Name { get; set; }
         public int ChargeByRegion { get; set; }
     }
 }
