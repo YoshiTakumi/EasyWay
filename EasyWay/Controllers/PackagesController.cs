@@ -39,15 +39,60 @@ namespace EasyWay.Controllers
             var sizeOfPackage = _context.SizeOfPackages.ToList();
             var chargeOfPackage = _context.ChargeOfPackages.ToList();
 
-            var viewModel = new NewPackageViewModel
+            var viewModel = new PackageFormViewModel
             {
                 SizeOfPackages = sizeOfPackage,
                 ChargeOfPackages = chargeOfPackage
             };
             
-            return View(viewModel);
+            return View("PackageForm",viewModel);
         }
 
+        [HttpPost]
+        public ActionResult Save(Package package)
+        {
+            if(package.Id == 0)
+                _context.Packages.Add(package);
+            else
+            {
+                var packageInDb = _context.Packages.Single(p => p.Id == package.Id);
+                packageInDb.Sender = package.Sender;
+                packageInDb.Receiver = package.Receiver;
+                packageInDb.ReceiverAddress = package.ReceiverAddress;
+                packageInDb.SerialNumber = package.SerialNumber;
+                packageInDb.DateLeft = package.DateLeft;
+                packageInDb.Phone = package.Phone;
+                packageInDb.SizeOfPackageId = package.SizeOfPackageId;
+                packageInDb.ChargeOfPackageId = package.ChargeOfPackageId;
+
+
+            }
+
+
+            _context.SaveChanges();
+
+
+            return RedirectToAction("Index", "Packages");
+        }
+
+
+        public ActionResult Edit(int id)
+        {
+            var package = _context.Packages.SingleOrDefault(p => p.Id == id);
+
+            if (package == null)
+                return HttpNotFound();
+            var viewModel = new PackageFormViewModel
+            {
+                Package = package,
+                SizeOfPackages = _context.SizeOfPackages.ToList(),
+                ChargeOfPackages = _context.ChargeOfPackages.ToList()
+            };
+
+            return View("PackageForm", viewModel);
+          
+
+        }
         
 
 

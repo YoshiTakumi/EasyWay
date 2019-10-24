@@ -32,6 +32,11 @@ namespace EasyWay.Controllers
             return View(drivers);
         }
 
+        public ActionResult New()
+        {
+
+        }
+
         public ActionResult Details(int id)
         {
 

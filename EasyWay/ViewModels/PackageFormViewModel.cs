@@ -6,7 +6,7 @@ using EasyWay.Models;
 
 namespace EasyWay.ViewModels
 {
-    public class NewPackageViewModel
+    public class PackageFormViewModel
     {
         public IEnumerable<SizeOfPackage> SizeOfPackages { get; set; }
         public IEnumerable<ChargeOfPackage> ChargeOfPackages { get; set; }
