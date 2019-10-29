@@ -1,0 +1,33 @@
+﻿@model EasyWay.Models.Car
+@{
+    ViewBag.Title = "CarsForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Driver</h2>
+
+@using (Html.BeginForm("Save", "Cars"))
+{
+    <div class="form-group">
+        @Html.LabelFor(c => c.Brand)
+        @Html.TextBoxFor(c => c.Brand, new { @class = "form-control" })
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.YearManufactured)
+        @Html.TextBoxFor(c => c.YearManufactured, new { @class = "form-control" })
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.LicensePlate)
+        @Html.TextBoxFor(c => c.LicensePlate, new { @class = "form-control" })
+    </div>
+
+
+    @Html.HiddenFor(d => d.Id)
+    <button type="submit" class="btn btn-primary">Save</button>
+    
+}
+

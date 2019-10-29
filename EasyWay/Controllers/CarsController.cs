@@ -16,7 +16,12 @@ namespace EasyWay.Controllers
             _context = new ApplicationDbContext();
         }
 
-        
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
 
         public ActionResult Index()
         {
@@ -26,7 +31,48 @@ namespace EasyWay.Controllers
         }
 
 
-        
+        public ActionResult New()
+        {
+            return View("CarsForm");
+        }
+
+
+
+        [HttpPost]
+        public ActionResult Save(Car car)
+        {
+            if (car.Id == 0)
+                _context.Cars.Add(car);
+            else
+            {
+                var carInDb = _context.Cars.Single(c => c.Id == car.Id);
+                carInDb.Brand = car.Brand;
+                carInDb.YearManufactured = car.YearManufactured;
+                carInDb.LicensePlate = car.LicensePlate;
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Cars");
+        }
+
+
+
+        public ActionResult Edit(int id)
+        {
+            var car = _context.Cars.SingleOrDefault(c => c.Id == id);
+            if (car == null)
+                return HttpNotFound();
+
+            var carEdit = new Car
+            {
+                Brand = car.Brand,
+                YearManufactured = car.YearManufactured,
+                LicensePlate = car.LicensePlate
+            };
+
+            return View("CarsForm", carEdit);
+        }
 
         
     }

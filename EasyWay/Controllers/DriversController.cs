@@ -32,19 +32,54 @@ namespace EasyWay.Controllers
             return View(drivers);
         }
 
+
+
         public ActionResult New()
         {
-
+            return View("DriversForm");
         }
 
-        public ActionResult Details(int id)
+
+
+
+
+        [HttpPost]
+        public ActionResult Save(Driver driver)
+        {
+            if (driver.Id == 0)
+                _context.Drivers.Add(driver);
+
+            else
+            {
+                var driverInDb = _context.Drivers.Single(d => d.Id == driver.Id);
+                driverInDb.Name = driver.Name;
+                driverInDb.Birthdate = driver.Birthdate;
+                driverInDb.Phone = driver.Phone;
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Drivers");
+        }
+
+        
+
+        public ActionResult Edit (int id)
         {
 
             var driver = _context.Drivers.SingleOrDefault(d => d.Id == id);
             if (driver == null)
                 return HttpNotFound();
-            else
-                return View(driver);
+
+            var driverEdit = new Driver
+            {
+                
+                Name = driver.Name,
+                Birthdate = driver.Birthdate,
+                Phone = driver.Phone
+            };
+
+            return View("DriversForm",driverEdit);
         }
 
 
