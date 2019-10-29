@@ -26,14 +26,14 @@ namespace EasyWay.Models
 
         [Required]
         [Display(Name = "Serial Number")]
-        public int SerialNumber { get; set; }
+        public int? SerialNumber { get; set; }
 
         [Required]
         [Display(Name = "Delivery date")]
-        public DateTime DateLeft { get; set; }
+        public DateTime? DateLeft { get; set; }
 
         [Required]
-        public long Phone { get; set; }
+        public long? Phone { get; set; }
 
 
         public bool Delivered { get; set; }

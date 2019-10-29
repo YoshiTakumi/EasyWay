@@ -41,6 +41,7 @@ namespace EasyWay.Controllers
 
             var viewModel = new PackageFormViewModel
             {
+                Package = new Package(), 
                 SizeOfPackages = sizeOfPackage,
                 ChargeOfPackages = chargeOfPackage
             };
@@ -51,6 +52,20 @@ namespace EasyWay.Controllers
         [HttpPost]
         public ActionResult Save(Package package)
         {
+
+            if(!ModelState.IsValid)
+            {
+                var viewModel = new PackageFormViewModel
+                {
+                    Package = package,
+                    SizeOfPackages = _context.SizeOfPackages.ToList(),
+                    ChargeOfPackages = _context.ChargeOfPackages.ToList()
+                    
+                };
+
+                return View("PackageForm", viewModel);
+            }
+
             if(package.Id == 0)
                 _context.Packages.Add(package);
             else

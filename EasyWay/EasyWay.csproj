@@ -214,6 +214,14 @@
     <Compile Include="Migrations\201910211310340_DbSetChanged.Designer.cs">
       <DependentUpon>201910211310340_DbSetChanged.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910291750387_AddDataAnotationToModels.cs" />
+    <Compile Include="Migrations\201910291750387_AddDataAnotationToModels.Designer.cs">
+      <DependentUpon>201910291750387_AddDataAnotationToModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910291833416_NullablePropsForValidation.cs" />
+    <Compile Include="Migrations\201910291833416_NullablePropsForValidation.Designer.cs">
+      <DependentUpon>201910291833416_NullablePropsForValidation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Car.cs" />
@@ -366,6 +374,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910211310340_DbSetChanged.resx">
       <DependentUpon>201910211310340_DbSetChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910291750387_AddDataAnotationToModels.resx">
+      <DependentUpon>201910291750387_AddDataAnotationToModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910291833416_NullablePropsForValidation.resx">
+      <DependentUpon>201910291833416_NullablePropsForValidation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

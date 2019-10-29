@@ -36,7 +36,9 @@ namespace EasyWay.Controllers
 
         public ActionResult New()
         {
-            return View("DriversForm");
+            var driver = new Driver();
+            
+            return View("DriversForm", driver);
         }
 
 
@@ -46,6 +48,12 @@ namespace EasyWay.Controllers
         [HttpPost]
         public ActionResult Save(Driver driver)
         {
+            if(!ModelState.IsValid)
+            {
+                
+                return View("DriversForm");
+            }
+
             if (driver.Id == 0)
                 _context.Drivers.Add(driver);
 

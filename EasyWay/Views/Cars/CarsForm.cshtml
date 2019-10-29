@@ -1,6 +1,6 @@
 ﻿@model EasyWay.Models.Car
 @{
-    ViewBag.Title = "CarsForm";
+    ViewBag.Title = "Cars Form";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -8,21 +8,25 @@
 
 @using (Html.BeginForm("Save", "Cars"))
 {
+    @Html.ValidationSummary(true, "An error occurred, please fix the following errors")
     <div class="form-group">
         @Html.LabelFor(c => c.Brand)
         @Html.TextBoxFor(c => c.Brand, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Brand)
     </div>
 
 
     <div class="form-group">
         @Html.LabelFor(c => c.YearManufactured)
         @Html.TextBoxFor(c => c.YearManufactured, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.YearManufactured)
     </div>
 
 
     <div class="form-group">
         @Html.LabelFor(c => c.LicensePlate)
         @Html.TextBoxFor(c => c.LicensePlate, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.LicensePlate)
     </div>
 
 

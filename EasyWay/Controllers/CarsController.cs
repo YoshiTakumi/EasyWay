@@ -33,7 +33,9 @@ namespace EasyWay.Controllers
 
         public ActionResult New()
         {
-            return View("CarsForm");
+            var car = new Car();
+            
+            return View("CarsForm", car);
         }
 
 
@@ -41,6 +43,11 @@ namespace EasyWay.Controllers
         [HttpPost]
         public ActionResult Save(Car car)
         {
+            if(!ModelState.IsValid)
+            {
+                return View("CarsForm");
+            }
+
             if (car.Id == 0)
                 _context.Cars.Add(car);
             else
