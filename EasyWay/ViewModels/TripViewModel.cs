@@ -9,7 +9,7 @@ namespace EasyWay.ViewModels
     public class TripViewModel
     {
         public List<Package> Packages { get; set; }
-        public Driver Driver { get; set; }
-        public Car Car { get; set; }
+        public List<Driver> Drivers { get; set; }
+        public List<Car> Cars { get; set; }
     }
 }

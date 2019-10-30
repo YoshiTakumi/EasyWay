@@ -25,6 +25,7 @@ namespace EasyWay.Models
         public DbSet<Car> Cars { get; set; }
         public DbSet<SizeOfPackage> SizeOfPackages { get; set; }
         public DbSet<ChargeOfPackage> ChargeOfPackages { get; set; }
+        public DbSet<Trip> Trips { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
