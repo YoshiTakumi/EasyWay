@@ -13,10 +13,13 @@ namespace EasyWay.Models
         [Required]
         public string Brand { get; set; }
         
+
+        [Display(Name = "Year Manufactured")]
         public DateTime? YearManufactured { get; set; }
 
 
         [Required]
+        [Display(Name = "License Plate")]
         public string LicensePlate { get; set; }
     }
 }
