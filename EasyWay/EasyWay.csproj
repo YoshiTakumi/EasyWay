@@ -347,7 +347,7 @@
     <Content Include="Views\Cars\CarsForm.cshtml" />
     <Content Include="Views\Home\TripForm.cshtml" />
     <Content Include="Views\Packages\Index.cshtml" />
-    <Content Include="Views\Packages\PackageForm.cshtml" />
+    <Content Include="Views\Packages\PackagesForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

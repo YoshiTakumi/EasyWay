@@ -41,6 +41,7 @@ namespace EasyWay.Controllers
 
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Car car)
         {
             if(!ModelState.IsValid)

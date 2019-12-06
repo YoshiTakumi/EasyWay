@@ -46,6 +46,7 @@ namespace EasyWay.Controllers
 
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Driver driver)
         {
             if(!ModelState.IsValid)

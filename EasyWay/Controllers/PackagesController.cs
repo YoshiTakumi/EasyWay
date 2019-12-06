@@ -46,10 +46,11 @@ namespace EasyWay.Controllers
                 ChargeOfPackages = chargeOfPackage
             };
             
-            return View("PackageForm",viewModel);
+            return View("PackagesForm",viewModel);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Package package)
         {
 
@@ -63,7 +64,7 @@ namespace EasyWay.Controllers
                     
                 };
 
-                return View("PackageForm", viewModel);
+                return View("PackagesForm", viewModel);
             }
 
             if(package.Id == 0)
@@ -104,7 +105,7 @@ namespace EasyWay.Controllers
                 ChargeOfPackages = _context.ChargeOfPackages.ToList()
             };
 
-            return View("PackageForm", viewModel);
+            return View("PackagesForm", viewModel);
           
 
         }
