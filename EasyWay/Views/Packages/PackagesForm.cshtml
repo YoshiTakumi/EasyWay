@@ -1,0 +1,85 @@
+﻿@model EasyWay.ViewModels.PackageFormViewModel
+@{
+    ViewBag.Title = "Packages Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Package</h2>
+
+@using (Html.BeginForm("Save", "Packages"))
+{
+    @Html.ValidationSummary(true, "An error occurred, please fix the following errors")
+    <div class="form-group">
+        @Html.LabelFor(p => p.Package.Sender)
+        @Html.TextBoxFor(p => p.Package.Sender, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Package.Sender)
+    </div>
+
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Package.Receiver)
+        @Html.TextBoxFor(p => p.Package.Receiver, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Package.Receiver)
+    </div>
+
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Package.ReceiverAddress)
+        @Html.TextBoxFor(p => p.Package.ReceiverAddress, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Package.ReceiverAddress)
+    </div>
+
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Package.Phone)
+        @Html.TextBoxFor(p => p.Package.Phone, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Package.Phone)
+    </div>
+
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Package.DateLeft)
+        @Html.TextBoxFor(p => p.Package.DateLeft, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Package.DateLeft)
+    </div>
+
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Package.SerialNumber)
+        @Html.TextBoxFor(p => p.Package.SerialNumber, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Package.SerialNumber)
+    </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Package.SizeOfPackageId)
+        @Html.DropDownListFor(p => p.Package.SizeOfPackageId, new SelectList(Model.SizeOfPackages, "Id", "Name"), "Pick a size", new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Package.SizeOfPackageId)
+    </div>
+
+
+    
+    <div class="form-group">
+        @Html.LabelFor(p => p.Package.ChargeOfPackageId)
+        @Html.DropDownListFor(p => p.Package.ChargeOfPackageId, new SelectList(Model.ChargeOfPackages, "Id", "Name"), "Pick a region",new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Package.Sender)
+    </div>
+
+
+
+    @Html.HiddenFor(p => p.Package.Id)
+    <button type="submit" class="btn btn-primary">Save</button>
+
+}
+
