@@ -41,7 +41,7 @@ namespace EasyWay.Controllers
 
             var viewModel = new PackageFormViewModel
             {
-                Package = new Package(), 
+                
                 SizeOfPackages = sizeOfPackage,
                 ChargeOfPackages = chargeOfPackage
             };
@@ -56,9 +56,9 @@ namespace EasyWay.Controllers
 
             if(!ModelState.IsValid)
             {
-                var viewModel = new PackageFormViewModel
+                var viewModel = new PackageFormViewModel(package)
                 {
-                    Package = package,
+                    
                     SizeOfPackages = _context.SizeOfPackages.ToList(),
                     ChargeOfPackages = _context.ChargeOfPackages.ToList()
                     
@@ -98,9 +98,11 @@ namespace EasyWay.Controllers
 
             if (package == null)
                 return HttpNotFound();
-            var viewModel = new PackageFormViewModel
+            var viewModel = new PackageFormViewModel(package)
             {
-                Package = package,
+                 
+
+
                 SizeOfPackages = _context.SizeOfPackages.ToList(),
                 ChargeOfPackages = _context.ChargeOfPackages.ToList()
             };

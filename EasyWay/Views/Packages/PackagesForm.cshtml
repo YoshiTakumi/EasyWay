@@ -10,75 +10,75 @@
 {
     @Html.ValidationSummary(true, "An error occurred, please fix the following errors")
     <div class="form-group">
-        @Html.LabelFor(p => p.Package.Sender)
-        @Html.TextBoxFor(p => p.Package.Sender, new { @class = "form-control" })
-        @Html.ValidationMessageFor(p => p.Package.Sender)
+        @Html.LabelFor(p => p.Sender)
+        @Html.TextBoxFor(p => p.Sender, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Sender)
     </div>
 
 
 
 
     <div class="form-group">
-        @Html.LabelFor(p => p.Package.Receiver)
-        @Html.TextBoxFor(p => p.Package.Receiver, new { @class = "form-control" })
-        @Html.ValidationMessageFor(p => p.Package.Receiver)
+        @Html.LabelFor(p => p.Receiver)
+        @Html.TextBoxFor(p => p.Receiver, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Receiver)
     </div>
 
 
 
 
     <div class="form-group">
-        @Html.LabelFor(p => p.Package.ReceiverAddress)
-        @Html.TextBoxFor(p => p.Package.ReceiverAddress, new { @class = "form-control" })
-        @Html.ValidationMessageFor(p => p.Package.ReceiverAddress)
+        @Html.LabelFor(p => p.ReceiverAddress)
+        @Html.TextBoxFor(p => p.ReceiverAddress, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.ReceiverAddress)
     </div>
 
 
 
 
     <div class="form-group">
-        @Html.LabelFor(p => p.Package.Phone)
-        @Html.TextBoxFor(p => p.Package.Phone, new { @class = "form-control" })
-        @Html.ValidationMessageFor(p => p.Package.Phone)
+        @Html.LabelFor(p => p.Phone)
+        @Html.TextBoxFor(p => p.Phone, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Phone)
     </div>
 
 
 
 
     <div class="form-group">
-        @Html.LabelFor(p => p.Package.DateLeft)
-        @Html.TextBoxFor(p => p.Package.DateLeft, new { @class = "form-control" })
-        @Html.ValidationMessageFor(p => p.Package.DateLeft)
+        @Html.LabelFor(p => p.DateLeft)
+        @Html.TextBoxFor(p => p.DateLeft, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.DateLeft)
     </div>
 
 
 
 
     <div class="form-group">
-        @Html.LabelFor(p => p.Package.SerialNumber)
-        @Html.TextBoxFor(p => p.Package.SerialNumber, new { @class = "form-control" })
-        @Html.ValidationMessageFor(p => p.Package.SerialNumber)
+        @Html.LabelFor(p => p.SerialNumber)
+        @Html.TextBoxFor(p => p.SerialNumber, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.SerialNumber)
     </div>
 
 
 
     <div class="form-group">
-        @Html.LabelFor(p => p.Package.SizeOfPackageId)
-        @Html.DropDownListFor(p => p.Package.SizeOfPackageId, new SelectList(Model.SizeOfPackages, "Id", "Name"), "Pick a size", new { @class = "form-control" })
-        @Html.ValidationMessageFor(p => p.Package.SizeOfPackageId)
+        @Html.LabelFor(p => p.SizeOfPackageId)
+        @Html.DropDownListFor(p => p.SizeOfPackageId, new SelectList(Model.SizeOfPackages, "Id", "Name"), "Pick a size", new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.SizeOfPackageId)
     </div>
 
 
     
     <div class="form-group">
-        @Html.LabelFor(p => p.Package.ChargeOfPackageId)
-        @Html.DropDownListFor(p => p.Package.ChargeOfPackageId, new SelectList(Model.ChargeOfPackages, "Id", "Name"), "Pick a region",new { @class = "form-control" })
-        @Html.ValidationMessageFor(p => p.Package.Sender)
+        @Html.LabelFor(p => p.ChargeOfPackageId)
+        @Html.DropDownListFor(p => p.ChargeOfPackageId, new SelectList(Model.ChargeOfPackages, "Id", "Name"), "Pick a region",new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Sender)
     </div>
 
 
 
-    @Html.HiddenFor(p => p.Package.Id)
+    @Html.HiddenFor(p => p.Id)
     @Html.AntiForgeryToken()
     <button type="submit" class="btn btn-primary">Save</button>
 
