@@ -101,8 +101,6 @@ namespace EasyWay.Controllers
             var viewModel = new PackageFormViewModel(package)
             {
                  
-
-
                 SizeOfPackages = _context.SizeOfPackages.ToList(),
                 ChargeOfPackages = _context.ChargeOfPackages.ToList()
             };
