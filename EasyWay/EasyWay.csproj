@@ -184,13 +184,19 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\CarsController.cs" />
     <Compile Include="Controllers\Api\DriversController.cs" />
+    <Compile Include="Controllers\Api\PackagesController.cs" />
     <Compile Include="Controllers\CarsController.cs" />
     <Compile Include="Controllers\DriversController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PackagesController.cs" />
+    <Compile Include="Dtos\CarDto.cs" />
+    <Compile Include="Dtos\ChargeOfPackageDto.cs" />
     <Compile Include="Dtos\DriverDto.cs" />
+    <Compile Include="Dtos\PackageDto.cs" />
+    <Compile Include="Dtos\SizeOfPackageDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

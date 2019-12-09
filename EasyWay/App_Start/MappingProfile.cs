@@ -12,9 +12,22 @@ namespace EasyWay.App_Start
     {
         public MappingProfile()
         {
+
+            //Domain to Dto
             CreateMap<Driver, DriverDto>();
-            CreateMap<DriverDto, Driver>();
-           
+            CreateMap<Package, PackageDto>();
+            CreateMap<Car, CarDto>();
+            CreateMap<ChargeOfPackage, ChargeOfPackageDto>();
+            CreateMap<SizeOfPackage, SizeOfPackageDto>();
+
+
+
+            //Dto to Domain
+            CreateMap<DriverDto, Driver>().ForMember(d => d.Id, opt => opt.Ignore());
+            CreateMap<PackageDto, Package>().ForMember(p => p.Id, opt => opt.Ignore());
+            CreateMap<CarDto, Car>().ForMember(c => c.Id, opt => opt.Ignore());
+
+
         }
     }
 }
