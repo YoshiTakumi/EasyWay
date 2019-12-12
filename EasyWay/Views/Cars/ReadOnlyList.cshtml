@@ -1,0 +1,59 @@
+﻿@model IEnumerable<EasyWay.Models.Car>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Cars</h1>
+
+<table id="cars" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Μάρκα-Μοντέλο</th>
+            <th>Έτος Κατασκευής</th>
+            <th>Πινακίδα</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        
+    </tbody>
+
+</table>
+
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+           var table = $("#cars").DataTable({
+                ajax: {
+                    url: "/api/cars",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "brand"
+                        
+                    },
+                    {
+                        data: "yearManufactured"
+
+                    },
+
+                    {
+                        data: "licensePlate"
+
+                    }
+
+                    
+
+                ]
+
+            });
+
+        });
+    </script>
+
+}

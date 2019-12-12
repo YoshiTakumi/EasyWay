@@ -1,0 +1,61 @@
+﻿@model IEnumerable<EasyWay.Models.Driver>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Drivers</h2>
+
+
+<table id="drivers" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Birthdate</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+       
+    </tbody>
+
+</table>
+
+
+
+
+@section scripts 
+{
+    <script>
+        $(document).ready(function () {
+           var table = $("#drivers").DataTable({
+                ajax: {
+                    url: "/api/drivers",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name"
+                        
+                    },
+                    {
+                        data: "phone"
+                         
+                    },
+
+                    {
+                        data: "birthdate"
+                        
+                    }
+
+                    
+                     
+                ]
+
+            });
+
+        });
+    </script>
+     
+}

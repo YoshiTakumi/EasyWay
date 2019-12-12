@@ -27,13 +27,15 @@ namespace EasyWay.Controllers
         
         public ViewResult Index()
         {
-            
+            if (User.IsInRole(RoleName.CanManagePackages))
+                return View("Index");
+            return View("ReadOnlyList");
 
-            return View();
+
         }
 
 
-
+        [Authorize(Roles = RoleName.CanManagePackages)]
         public ActionResult New()
         {
             var driver = new Driver();
@@ -47,6 +49,7 @@ namespace EasyWay.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManagePackages)]
         public ActionResult Save(Driver driver)
         {
             if(!ModelState.IsValid)
@@ -71,8 +74,8 @@ namespace EasyWay.Controllers
             return RedirectToAction("Index", "Drivers");
         }
 
-        
 
+        [Authorize(Roles = RoleName.CanManagePackages)]
         public ActionResult Edit (int id)
         {
 

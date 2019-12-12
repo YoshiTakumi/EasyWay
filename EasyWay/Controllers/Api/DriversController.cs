@@ -47,6 +47,7 @@ namespace EasyWay.Controllers.Api
 
         //POST /api/drivers
         [HttpPost]
+        [Authorize(Roles = RoleName.CanManagePackages)]
         public IHttpActionResult CreateDriver(DriverDto driverDto)
         {
             if (!ModelState.IsValid)
@@ -65,6 +66,7 @@ namespace EasyWay.Controllers.Api
 
         //PUT /api/drivers/1
         [HttpPut]
+        [Authorize(Roles = RoleName.CanManagePackages)]
         public void UpdateDriver(int id, DriverDto driverDto)
         {
             if (!ModelState.IsValid)
@@ -85,6 +87,7 @@ namespace EasyWay.Controllers.Api
 
         //DELETE /api/drivers/1
         [HttpDelete]
+        [Authorize(Roles = RoleName.CanManagePackages)]
         public void DeleteCustomer(int id)
         {
             var driverInDb = _context.Drivers.SingleOrDefault(d => d.Id == id);

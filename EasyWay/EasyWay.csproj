@@ -686,6 +686,8 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Sweet\Alert.cshtml" />
     <Content Include="Views\Packages\ReadOnlyList.cshtml" />
+    <Content Include="Views\Drivers\ReadOnlyList.cshtml" />
+    <Content Include="Views\Cars\ReadOnlyList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

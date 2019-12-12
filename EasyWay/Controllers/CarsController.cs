@@ -25,14 +25,16 @@ namespace EasyWay.Controllers
 
         public ActionResult Index()
         {
+            if (User.IsInRole(RoleName.CanManagePackages))
+                return View("Index");
+            return View("ReadOnlyList");
             
-            return View();
             
         }
 
 
 
-       
+        [Authorize(Roles = RoleName.CanManagePackages)]
         public ActionResult New()
         {
             var car = new Car();
@@ -44,6 +46,7 @@ namespace EasyWay.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManagePackages)]
         public ActionResult Save(Car car)
         {
             if(!ModelState.IsValid)
@@ -67,7 +70,7 @@ namespace EasyWay.Controllers
         }
 
 
-        
+        [Authorize(Roles = RoleName.CanManagePackages)]
         public ActionResult Edit(int id)
         {
             var car = _context.Cars.SingleOrDefault(c => c.Id == id);
