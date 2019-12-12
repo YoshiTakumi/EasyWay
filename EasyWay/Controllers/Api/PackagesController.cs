@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Data.Entity;
 using EasyWay.Dtos;
 using EasyWay.Models;
 using AutoMapper;
@@ -24,7 +25,7 @@ namespace EasyWay.Controllers.Api
         [HttpGet]
         public IEnumerable<PackageDto> GetPackages()
         {
-            return _context.Packages.ToList().Select(Mapper.Map<Package, PackageDto>);
+            return _context.Packages.Include(p => p.SizeOfPackage).Include(p => p.ChargeOfPackage).ToList().Select(Mapper.Map<Package, PackageDto>);
         }
 
 

@@ -7,7 +7,7 @@
 <h2>Package</h2>
 
 
-<table class="table table-bordered table-hover">
+<table id="packages" class="table table-bordered table-hover">
     <thead>
         <tr>
             <th>Serial Number</th>
@@ -15,35 +15,12 @@
             <th>Receiver</th>
             <th>Address</th>
             <th>Date</th>
+            <th>Delete</th>
             
         </tr>
     </thead>
     <tbody>
-        @foreach (var package in Model)
-        {
-            <tr>
-
-                <td>@package.SerialNumber</td>
-
-                <td>@package.Sender</td>
-
-                <td>@package.Receiver</td>
-
-                <td>@package.ReceiverAddress</td>
-
-                <td>@package.DateLeft</td>
-
-                
-                <td>
-                    <a href="@Url.Action("Edit", "Packages", new { id = package.Id })" class="btn btn-sm">
-                        Edit
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                    </a>
-                </td>
-
-            </tr>
-
-        }
+       
     </tbody>
 
 </table>
@@ -52,3 +29,80 @@
     @Html.ActionLink("New Package", "New", "Packages", null, new { @class = "btn btn-primary" })
 
 </p>
+
+@section scripts 
+{
+    <script>
+        $(document).ready(function () {
+           var table = $("#packages").DataTable({
+                ajax: {
+                    url: "/api/packages",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "serialNumber",
+                        render: function (data, type, package) {
+                            return "<a href='/packages/edit/" + package.id + "'>" + package.serialNumber + "</a>";
+                        }
+                    },
+                    {
+                        data: "sender",
+                         
+                    },
+
+                    {
+                        data: "receiver",
+                        
+                    },
+
+                    {
+                        data: "receiverAddress"
+                    },
+
+                    {
+                        data: "dateLeft"
+                    },
+
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn-link js-delete' data-package-id=" + data + ">Delete</button>";
+                        }
+                    }
+                     
+                ]
+
+            });
+
+
+            $("#packages").on("click", ".js-delete", function () {
+                var button = $(this);
+
+                
+                bootbox.confirm("Are you sure you want to delete this package?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/packages/" + button.attr("data-package-id"),
+                            method: "DELETE",
+                            success: function () {
+                                table.row(button.parents("tr")).remove().draw();
+                                
+                            }
+                         });
+                    }
+                    
+                });
+            });
+         
+        });
+
+
+
+    </script>
+    
+    
+    
+    
+    
+}

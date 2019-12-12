@@ -27,9 +27,9 @@ namespace EasyWay.Controllers
         
         public ViewResult Index()
         {
-            var drivers = _context.Drivers.ToList();
+            
 
-            return View(drivers);
+            return View();
         }
 
 
