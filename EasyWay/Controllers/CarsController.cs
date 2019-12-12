@@ -25,12 +25,14 @@ namespace EasyWay.Controllers
 
         public ActionResult Index()
         {
-            var cars = _context.Cars.ToList();
-
-            return View(cars);
+            
+            return View();
+            
         }
 
 
+
+       
         public ActionResult New()
         {
             var car = new Car();
@@ -39,7 +41,7 @@ namespace EasyWay.Controllers
         }
 
 
-
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Save(Car car)
@@ -65,7 +67,7 @@ namespace EasyWay.Controllers
         }
 
 
-
+        
         public ActionResult Edit(int id)
         {
             var car = _context.Cars.SingleOrDefault(c => c.Id == id);

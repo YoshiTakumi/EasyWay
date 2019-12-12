@@ -11,6 +11,7 @@ using EasyWay.Models;
 
 namespace EasyWay.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         private ApplicationDbContext _context;

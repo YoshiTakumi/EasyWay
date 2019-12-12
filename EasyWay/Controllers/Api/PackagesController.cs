@@ -31,6 +31,7 @@ namespace EasyWay.Controllers.Api
 
 
         //GET  /api/packages/1
+        
         [HttpGet]
         public IHttpActionResult GetPackage(int id)
         {
@@ -43,6 +44,7 @@ namespace EasyWay.Controllers.Api
 
 
         //POST  /api/packages
+        [Authorize(Roles = RoleName.CanManagePackages)]
         [HttpPost]
         public IHttpActionResult CreatePackage(PackageDto packageDto)
         {
@@ -61,6 +63,7 @@ namespace EasyWay.Controllers.Api
 
 
         //PUT  /api/package/1
+        [Authorize(Roles = RoleName.CanManagePackages)]
         [HttpPut]
         public void UpdatePackage(int id, PackageDto packageDto)
         {
@@ -80,6 +83,7 @@ namespace EasyWay.Controllers.Api
 
 
         //DELETE  /api/package/1
+        [Authorize(Roles = RoleName.CanManagePackages)]
         [HttpDelete]
         public void DeletePackage(int id)
         {

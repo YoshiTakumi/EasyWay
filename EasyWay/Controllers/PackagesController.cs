@@ -17,7 +17,7 @@ namespace EasyWay.Controllers
         public PackagesController()
         {
             _context = new ApplicationDbContext();
-        }
+        } 
 
 
         protected override void Dispose(bool disposing)
@@ -28,12 +28,16 @@ namespace EasyWay.Controllers
 
         public ViewResult Index()
         {
-            var packages = _context.Packages.Include(p => p.SizeOfPackage).Include(p => p.ChargeOfPackage).ToList();
 
-           
-            return View(packages);
+            if (User.IsInRole(RoleName.CanManagePackages))
+                return View("Index");
+            return View("ReadOnlyList");
+            
+          
+            
         }
 
+        [Authorize(Roles = RoleName.CanManagePackages)]
         public ActionResult New()
         {
             var sizeOfPackage = _context.SizeOfPackages.ToList();
@@ -49,6 +53,8 @@ namespace EasyWay.Controllers
             return View("PackagesForm",viewModel);
         }
 
+
+        [Authorize(Roles = RoleName.CanManagePackages)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Save(Package package)
@@ -92,6 +98,8 @@ namespace EasyWay.Controllers
         }
 
 
+
+        [Authorize(Roles = RoleName.CanManagePackages)]
         public ActionResult Edit(int id)
         {
             var package = _context.Packages.SingleOrDefault(p => p.Id == id);
