@@ -96,3 +96,4 @@ namespace EasyWay.Controllers.Api
         }
     }
 }
+

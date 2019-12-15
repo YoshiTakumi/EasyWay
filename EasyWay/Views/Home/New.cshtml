@@ -1,0 +1,158 @@
+﻿@model dynamic
+@{
+    ViewBag.Title = "New Trip Form";
+
+}
+
+<h2>New Trip</h2>
+
+<form id="newTrip">
+    <div class="form-group">
+        <label>Driver</label>
+        <div class="tt-container">
+            <input id="driver" type="text" value="" class="form-control" />
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label>Car</label>
+        <div class="tt-container">
+            <input id="car" type="text" value="" class="form-control" />
+        </div>
+    </div>
+
+
+    <div>
+        <label>Package</label>
+        <div class="tt-container">
+            <input id="package" type="text" value="" class="form-control" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 col-sm-4">
+            <ul id="packages" class="list-group"></ul>
+        </div>
+    </div>
+
+
+
+    <button class="btn btn-primary">Submit</button>
+
+</form>
+
+@section scripts 
+{
+    <script>
+        $(document).ready(function () {
+
+            var vm = {
+               packageIds: []
+
+            };
+            var drivers = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                url: '/api/drivers?query=%QUERY',
+                wildcard: '%QUERY'
+                }
+            });
+
+            $('#driver').typeahead({
+                minLength: 3,
+                highlight: true
+            }, {
+                name: 'drivers',
+                display: 'name',
+                source: drivers
+            }).on("typeahed:select", function (e, driver) {
+                vm.driverId = driver.id;
+            });
+
+
+
+
+
+            var cars = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('brand'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                url: '/api/cars?query=%QUERY',
+                wildcard: '%QUERY'
+                }
+            });
+
+            $('#car').typeahead({
+                minLength: 3,
+                highlight: true
+            }, {
+                name: 'cars',
+                display: 'brand',
+                source: cars
+            }).on("typeahed:select", function (e, car) {
+                vm.carId = car.id;
+            });
+
+
+
+
+            var packages = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('serialNumber'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                url: '/api/packages?query=%QUERY',
+                wildcard: '%QUERY'
+                }
+            });
+
+            $('#package').typeahead({
+                minLength: 3,
+                highlight: true
+            }, {
+                name: 'packages',
+                display: 'serialNumber',
+                source: packages
+            }).on("typeahed:select", function (e, package) {
+                $("#packages").append("<li class='list-group-item'>" + package.serialNumber + "</li>");
+
+                $("#package").typeahead("val", "");
+
+                vm.packageIds.push(package.id);
+            });
+
+            $("#newTrip").submit(function (e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: "/api/newTrips",
+                    method: "post",
+                    data: vm
+
+                })
+
+                    .done(function () {
+                        console.log("done");
+                    })
+
+                    .fail(function () {
+
+                    });
+
+
+
+            });
+
+        });
+
+
+
+
+
+    </script>
+    
+    
+    
+}
+ 

@@ -23,5 +23,10 @@ namespace EasyWay.Models
         [Required]
         public Car Car { get; set; }
 
+        [Required]
+        public DateTime DateLeftTheStore { get; set; }
+
+
+
     }
 }

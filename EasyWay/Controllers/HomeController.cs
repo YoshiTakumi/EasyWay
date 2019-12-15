@@ -29,13 +29,15 @@ namespace EasyWay.Controllers
 
         public ActionResult Index()
         {
-            var trips = _context.Trips.Include(t => t.Package).Include(t => t.Driver).Include(t => t.Car).ToList();
 
-            return View(trips);
+            return View();
         }
 
 
-
+        public ActionResult New()
+        {
+            return View();
+        }
 
 
 
