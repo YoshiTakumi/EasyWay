@@ -195,6 +195,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PackagesController.cs" />
     <Compile Include="Controllers\SweetController.cs" />
+    <Compile Include="Controllers\TripsController.cs" />
     <Compile Include="Dtos\CarDto.cs" />
     <Compile Include="Dtos\ChargeOfPackageDto.cs" />
     <Compile Include="Dtos\DriverDto.cs" />
@@ -704,7 +705,7 @@
     <Content Include="Views\Packages\ReadOnlyList.cshtml" />
     <Content Include="Views\Drivers\ReadOnlyList.cshtml" />
     <Content Include="Views\Cars\ReadOnlyList.cshtml" />
-    <Content Include="Views\Home\New.cshtml" />
+    <Content Include="Views\Trips\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

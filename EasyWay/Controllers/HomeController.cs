@@ -34,11 +34,7 @@ namespace EasyWay.Controllers
         }
 
 
-        public ActionResult New()
-        {
-            return View();
-        }
-
+     
 
 
         public ActionResult About()

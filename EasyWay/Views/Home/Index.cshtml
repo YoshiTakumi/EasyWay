@@ -1,30 +1,10 @@
-﻿@model IEnumerable<EasyWay.Models.Trip>
+﻿
 @{
     ViewBag.Title = "Home Page";
 }
 
 <h1>Δρομολόγια</h1>
 
-<table class="table table-bordered table-hover">
-
-    <thead>
-        <tr>
-            <th>Driver</th>
-            <th>Car</th>
-            <th>Packages</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(var trip in Model)
-        {
-            <tr>
-                <td>@trip.Driver.Name</td>
-                <td>@trip.Car.Brand</td>
-                
-            </tr>
-        }
-    </tbody>
-</table>
     
 
 
